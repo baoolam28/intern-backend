@@ -3,6 +3,7 @@ package com.onestep.business_management.Service.OrderService;
 import com.onestep.business_management.DTO.OrderReportResponse;
 import com.onestep.business_management.DTO.OrderRequest;
 import com.onestep.business_management.DTO.OrderResponse;
+import com.onestep.business_management.DTO.PaymentRequest;
 import com.onestep.business_management.Entity.Order;
 import com.onestep.business_management.Entity.OrderDetail;
 import com.onestep.business_management.Entity.Customer;
@@ -74,13 +75,13 @@ public class OrderService {
 
 
     @Transactional
-    public OrderResponse updateOrderPayment(Integer orderId, String paymentMethod, boolean paymentStatus) {
-        Order order = orderRepository.findById(orderId)
+    public OrderResponse Payment(PaymentRequest paymentRequest) {
+        Order order = orderRepository.findById(paymentRequest.getOrderId())
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
         // Update payment details
-        order.setPaymentMethod(paymentMethod);
-        order.setPaymentStatus(paymentStatus);
+        order.setPaymentMethod(paymentRequest.getPaymentMethod());
+        order.setPaymentStatus(true);
         order.setStatus("COMPLETED"); // Update order status as needed
 
         Order updatedOrder = orderRepository.save(order);
