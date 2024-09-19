@@ -3,13 +3,13 @@ package com.onestep.business_management.Controller;
 import com.onestep.business_management.DTO.OrderReportResponse;
 import com.onestep.business_management.DTO.OrderRequest;
 import com.onestep.business_management.DTO.OrderResponse;
+import com.onestep.business_management.DTO.PaymentRequest;
 import com.onestep.business_management.Service.OrderService.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -51,12 +51,11 @@ public class OrderController {
         }
     }
 
-    @PutMapping("/{orderId}/payment")
-    public ResponseEntity<OrderResponse> updateOrderPayment(@PathVariable Integer orderId,
-                                                            @RequestParam String paymentMethod,
-                                                            @RequestParam boolean paymentStatus) {
+    @PutMapping("/payment")
+    public ResponseEntity<OrderResponse> updateOrderPayment(@RequestBody PaymentRequest paymentRequest) {
         try {
-            OrderResponse response = orderService.updateOrderPayment(orderId, paymentMethod, paymentStatus);
+            System.out.println(paymentRequest.toString());
+            OrderResponse response = orderService.Payment(paymentRequest);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import com.onestep.business_management.Entity.OrderDetail;
+
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
@@ -32,5 +34,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             "GROUP BY YEAR(o.order_date) " +
             "ORDER BY year", nativeQuery = true)
     List<Object[]> countCustomerOrderByYear(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    
 
 }

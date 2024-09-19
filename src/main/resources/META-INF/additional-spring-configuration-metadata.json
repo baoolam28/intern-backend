@@ -13,5 +13,25 @@
     "name": "spring.servlet.encoding.force",
     "type": "java.lang.String",
     "description": "A description for 'spring.servlet.encoding.force'"
+  },
+  {
+    "name": "vietqr.clientId",
+    "type": "java.lang.String",
+    "description": "A description for 'vietqr.clientId'"
+  },
+  {
+    "name": "vietqr.apiKey",
+    "type": "java.lang.String",
+    "description": "A description for 'vietqr.apiKey'"
+  },
+  {
+    "name": "vietqr.clientId",
+    "type": "java.lang.String",
+    "description": "A description for 'vietqr.clientId'"
+  },
+  {
+    "name": "vietqr.apiKey",
+    "type": "java.lang.String",
+    "description": "A description for 'vietqr.apiKey'"
   }
 ]}
